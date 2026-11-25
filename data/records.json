@@ -1,0 +1,132 @@
+{
+  "frames": [
+    {
+      "frame_id": "f-a1",
+      "camera_id": "camera-a",
+      "collection_id": "col-1"
+    },
+    {
+      "frame_id": "f-a2",
+      "camera_id": "camera-a",
+      "collection_id": "col-2"
+    },
+    {
+      "frame_id": "f-b1",
+      "camera_id": "camera-b",
+      "collection_id": "col-3"
+    },
+    {
+      "frame_id": "f-b2",
+      "camera_id": "camera-b",
+      "collection_id": "col-3"
+    }
+  ],
+  "valid": [
+    [
+      [
+        true,
+        true,
+        true,
+        true
+      ],
+      [
+        true,
+        true,
+        true,
+        true
+      ],
+      [
+        true,
+        true,
+        true,
+        true
+      ]
+    ],
+    [
+      [
+        true,
+        true,
+        false,
+        false
+      ],
+      [
+        true,
+        true,
+        false,
+        false
+      ],
+      [
+        true,
+        true,
+        false,
+        false
+      ]
+    ],
+    [
+      [
+        false,
+        false,
+        false,
+        false
+      ],
+      [
+        false,
+        false,
+        false,
+        false
+      ],
+      [
+        false,
+        false,
+        false,
+        false
+      ]
+    ],
+    [
+      [
+        true,
+        true,
+        true,
+        true
+      ],
+      [
+        true,
+        true,
+        true,
+        true
+      ],
+      [
+        true,
+        true,
+        true,
+        true
+      ]
+    ]
+  ],
+  "domain_maps": [
+    {
+      "revision": "dom1",
+      "mapping": {
+        "camera-a": "north",
+        "camera-b": "south"
+      }
+    },
+    {
+      "revision": "dom2",
+      "mapping": {
+        "camera-a": "merged",
+        "camera-b": "merged"
+      }
+    }
+  ],
+  "microbatches": [
+    [
+      0,
+      2
+    ],
+    [
+      1,
+      3
+    ]
+  ]
+}

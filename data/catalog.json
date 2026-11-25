@@ -1,0 +1,14 @@
+{
+  "product": "多摄像头有效区域归一化与模型冻结",
+  "provenance": "所有数值、实体和事件均为本地合成资料，不代表真实用户或已发生事故。",
+  "format_revision": 1,
+  "tensors": {
+    "features": "data/tensors/features.json",
+    "gamma": "data/tensors/gamma.json",
+    "beta": "data/tensors/beta.json",
+    "upstream": "data/tensors/upstream.json",
+    "conv_weight": "data/tensors/conv_weight.json",
+    "conv_bias": "data/tensors/conv_bias.json",
+    "conv_input": "data/tensors/conv_input.json"
+  }
+}

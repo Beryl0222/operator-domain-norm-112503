@@ -1,0 +1,46 @@
+[
+  {
+    "id": "merge-revoke-export",
+    "events": [
+      {
+        "kind": "train_commit",
+        "collection_ids": [
+          "col-1",
+          "col-2",
+          "col-3"
+        ]
+      },
+      {
+        "kind": "merge_domain",
+        "revision": "dom2"
+      },
+      {
+        "kind": "revoke_collection",
+        "collection_id": "col-2"
+      },
+      {
+        "kind": "export",
+        "domain_revision": "dom2"
+      },
+      {
+        "kind": "mixed_domain_inference",
+        "camera_ids": [
+          "camera-a",
+          "camera-b"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rejected-window",
+    "events": [
+      {
+        "kind": "train_reject",
+        "collection_id": "col-4"
+      },
+      {
+        "kind": "query_running_statistics"
+      }
+    ]
+  }
+]
