@@ -1,0 +1,50 @@
+{
+  "id": "full-transfer-window",
+  "parameters": {
+    "step_id": "large-step",
+    "parameter_id": "p-large",
+    "member_ids": [
+      "r0",
+      "r1"
+    ],
+    "byte_budget": 163840,
+    "max_abs": 0.02,
+    "l2": 5
+  },
+  "arrays": {
+    "rank0": {
+      "shape": [
+        262144
+      ],
+      "pattern": "uniform",
+      "dtype": "float32",
+      "low": -0.1,
+      "high": 0.1
+    },
+    "rank1": {
+      "shape": [
+        262144
+      ],
+      "pattern": "uniform",
+      "dtype": "float32",
+      "low": -0.1,
+      "high": 0.1
+    },
+    "residual0": {
+      "shape": [
+        262144
+      ],
+      "pattern": "constant",
+      "dtype": "float32",
+      "value": 0
+    },
+    "residual1": {
+      "shape": [
+        262144
+      ],
+      "pattern": "constant",
+      "dtype": "float32",
+      "value": 0
+    }
+  }
+}

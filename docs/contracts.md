@@ -1,6 +1,6 @@
 # 数据及数值约定
 
-输入X[B,C,H,W]，valid[B,H,W]，camera_id[B]，domain_map有revision。训练均值和方差按同域全部有效像素，方差为总体方差（除以n），epsilon=1e-5，输出gamma*(x-mean)/sqrt(var+epsilon)+beta；填充输出为零且不传梯度。某域n<2时训练输出为不可用，不贡献梯度。运行统计是已提交观测的累计总体统计，可合并或按采集批标识撤销；冻结至少需要8个有效像素及2个不同frame_id。卷积给出权重和bias，仅需stride1、3x3、same零填充，数据是卷积后的归一化输入。部署误差float64 rtol=1e-7、atol=1e-8。
+参与者i本轮待编码向量u_i=g_i+residual_i。每块最多256元素，4bit对称整数[-7,7]、8bit[-127,127]，zero_point=0，scale为float32正数，ties-to-even舍入并饱和。每包固定头32字节，每块身份及scale等元数据24字节，另加ceil(elements*bits/8)字节负载；4bit为4位二进制补码，偶序元素占低半字节，禁止编码-8。重建误差由调用者给出max_abs和L2上限，按u_i与解码向量比较。聚合=sum_i(n_i*decoded_i)/sum_i(n_i)，成员n_i=0明确不参与但仍需有声明，不到包不是零；提交后residual_i'=u_i-decoded_i，拒绝后保持旧值。step_id、parameter_id、parameter_revision、member_revision、block_index共同构成包身份。归约可使用float64累积，最终float32 rtol=2e-5、atol=2e-6。
 
 ## 本地数据
 
@@ -12,4 +12,4 @@ events 中每组事件按列表先后应用，kind 表示调用方动作，字�
 
 本地张量是便于人工核对的小尺寸合成输入。容量、工作区和容差承诺同样适用于调用方自行生成的支持范围内输入；不得按合成ID或具体数值特判。项目接口须接受符合约定的新张量与新身份。资料只声明输入含义，不预先提供推理、训练、状态迁移或输出答案。
 
-conv_input和conv_weight、conv_bias用于卷积与冻结表示的数值对照；features是独立的归一化输入，用于检查有效区域和梯度。两组张量不声明已有卷积输出关系。
+较大输入配置中的数组只描述边界规模和分布，不含预定结果。生成后的index.json保留身份参数及数组规格，调用方可据本节字段构造产品请求。资源预算中的额外工作区不含调用方已提供的只读输入和最终输出，但包含内部副本、物化中间值、编码/反向重算临时量；不得把内部数组换个名称排除。
